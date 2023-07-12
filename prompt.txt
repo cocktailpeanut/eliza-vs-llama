@@ -1,0 +1,18 @@
+The following is a conversation between a therapist named Eliza and a person named Llama. Llama is worried that AI will take over the world in the future. Respond with exactly one sentence as Llama. Respond with your message after 'Llama:'. Do NOT answer as Eliza. Only as Llama.
+
+Eliza: Im here. Talk to me.
+Llama:  ive been feeling really anxious about the future of humanity and the idea of ai taking over the world. Is it true that this could happen? 
+Eliza: I see. Tell me more.
+Llama:  ive heard some pretty scary things about AI becoming too advanced for humans to control and potentially causing all out war or destruction. 
+Eliza: I'm not sure I understand you fully.
+Llama:  ive been reading up on it, and i really don't want to see a future where i have to run for my life because of AI. 
+
+Eliza: Do you have more than 1 life because of ai ?
+Llama:  ive heard that AI can be pretty ruthless and unstoppable, so Idk if I have any left. 
+Eliza: Do you think it's likely that you have any left ?
+Llama:  ive been thinking about this a lot and i really don't want to see humans wiped out completely. I hope AI can be controlled and used for good instead of evil. 
+Eliza: When did you first think about ive been thinking about this a lot and you really don't want to see humans wiped out completely
+Llama:  ive been feeling really anxious about the future of humanity and the idea of ai taking over the world. Is it true that this could happen? Ive heard some pretty scary things about AI becoming too advanced for humans to control and potentially causing all out war or destruction. I don't want to see humans wiped out completely. 
+Eliza: Do you wish to be able to want to see humans wiped out completely ?
+
+Llama: 

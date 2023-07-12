@@ -1,0 +1,104 @@
+{
+  "run": [{
+    "method": "input",
+    "params": {
+      "title": "Chatroom topic",
+      "form": [{
+        "key": "model",
+        "default": "{{self.config.model}}",
+        "description": "model (you must install the model first)"
+      }, {
+        "key": "topic",
+        "type": "textarea",
+        "default": "{{self.config.prompt}}",
+        "description": "Enter the topic of this conversation"
+      }]
+    }
+  }, {
+    "method": "self.set",
+    "params": {
+      "config.json": {
+        "model": "{{input.model}}",
+        "prompt": "{{input.topic}}"
+      }
+    }
+  }, {
+    "method": "local.set",
+    "params": {
+      "chat": []
+    }
+  }, {
+    "uri": "./index.js",
+    "method": "start"
+  }, {
+    "method": "local.set",
+    "params": {
+      "eliza": "{{input.eliza}}",
+      "chat": "{{local.chat.concat('Eliza: ' + input.message.replace(/llama:.*/i, ''))}}"
+    }
+  }, {
+    "method": "notify",
+    "params": {
+      "html": "{{local.chat[local.chat.length-1]}}"
+    }
+  }, {
+    "uri": "https://github.com/cocktailpeanut/llamacpp.pinokio.git/index.js",
+    "method": "query",
+    "params": {
+      "prompt": [
+        "{{self.config.prompt}}",
+        "",
+        "{{_.takeRight(local.chat, Math.min(20, local.chat.length)).join('\\r\\n')}}",
+        "",
+        "Llama: "
+      ],
+      "on": [
+        {
+          "event": "/.*Llama:(.+?)[\r\n]*###/gs",
+          "return": "{{event.matches[0][1]}}"
+        },
+        {
+          "event": "/.*Llama:(.+?)\\[end of text\\]/gs",
+          "return": "{{event.matches[0][1]}}"
+        },
+        {
+          "event": "/.*Llama:(.+?)llama_print_timings:/gs",
+          "return": "{{event.matches[0][1]}}"
+        }
+      ],
+      "model": "{{self.config.model}}",
+      "options": {
+        "-c": 2000
+      }
+    }
+  }, {
+    "method": "local.set",
+    "params": {
+      "llamareply": "{{input}}",
+      "chat": "{{local.chat.concat('Llama: ' + input.replace(/eliza:.*/i, ''))}}"
+    }
+  }, {
+    "method": "notify",
+    "params": {
+      "html": "{{local.chat[local.chat.length-1]}}"
+    }
+  }, {
+    "method": "process.wait",
+    "params": {
+      "sec": 5
+    }
+  }, {
+    "uri": "./index.js",
+    "method": "reply",
+    "params": {
+      "eliza": "{{local.eliza}}",
+      "message": "{{local.llamareply}}"
+    }
+  }, {
+    "method": "goto",
+    "params": {
+      "index": 4,
+      "input": "{{input}}"
+    }
+  }]
+}

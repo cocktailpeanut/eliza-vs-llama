@@ -1,0 +1,4 @@
+{
+  "model": "orca-mini/3b_q4_0.bin",
+  "prompt": "The following is a conversation between a therapist named Eliza and a person named Llama. Llama is worried that AI will take over the world in the future. Respond with exactly one sentence as Llama. Respond with your message after 'Llama:'. Do NOT answer as Eliza. Only as Llama."
+}
